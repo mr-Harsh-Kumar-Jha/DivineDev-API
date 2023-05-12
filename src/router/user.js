@@ -9,7 +9,9 @@ const userRouter = RestWave.router();
 userRouter.post('/createuser',async(req,res)=>{
    try{
       const {name,companyname,email,password} = req.data;
-      console.log(email,name,companyname);
+      console.log("Email: " + email);
+      console.log("company name: " + companyname);
+      console.log("name: " + name);
       if(!email || !validator.isEmail(email)){
          let error = new Error(`please provide valid email ${email}`);
          error.code = 400;
