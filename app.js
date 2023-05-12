@@ -50,6 +50,10 @@ app.post("/send", function (req, res) {
   });
 });
 
+app.get('/favicon.ico',(req,res)=>{
+   res.json('connected',200);
+})
+
 app.use("/v1", userRouter,reviewRouter);
 
 const port = Number(process.env.PORT);
