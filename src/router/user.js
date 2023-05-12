@@ -8,6 +8,7 @@ const userRouter = RestWave.router();
 
 userRouter.post('/createuser',async(req,res)=>{
    try{
+      console.log(req.data);
       const {name,companyname,email,password} = req.data;
       console.log("Email: " + email);
       console.log("company name: " + companyname);
