@@ -1,0 +1,30 @@
+### 8 tables
+
+1. users
+
+```sql
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  companyname VARCHAR(20) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(500) NOT NULL,
+  name VARCHAR(40) NOT NULL,
+);
+```
+
+#
+
+2. reviews
+
+```sql
+CREATE TABLE reviews(
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  content VARCHAR(500),
+  rating smallint
+);
+```
