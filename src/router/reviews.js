@@ -15,7 +15,7 @@ reviewRouter.post('/postreview',fetchuser,async(req,res)=>{
         throw error;
       }
       await pool.query(createPost(user.rows[0].id,description,rating));
-      res.send(201).json({success:true});
+      res.status(201).json({success:true});
    }catch(err){
       const message = err.message || "internal server Error !!!";
       const code = err.code || 500;
