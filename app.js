@@ -1,12 +1,15 @@
-import RestWave from "restwave";
+import express from "express";
 import * as dotenv from "dotenv";
+import cors from 'cors';
 // import transporter from "./src/utils/email.js";
 import userRouter from "./src/router/user.js";
 import reviewRouter from './src/router/reviews.js';
 import nodemailer from 'nodemailer';
 
 dotenv.config();
-const app = new RestWave();
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 const transporter = nodemailer.createTransport({
    service: "gmail",
@@ -23,7 +26,7 @@ const transporter = nodemailer.createTransport({
 
 app.post("/send", function (req, res) {
   console.log(req);
-  const { name, company, email, phone, projectIdea } = req.data;
+  const { name, company, email, phone, projectIdea } = req.body;
   let mailOptions = {
     from: `${email}`,
     to: process.env.EMAIL,
