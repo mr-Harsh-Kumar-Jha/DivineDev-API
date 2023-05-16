@@ -39,10 +39,10 @@ reviewRouter.get('/getreview',async (req,res)=>{
          const user = await pool.query(getUserThroughId(posts.rows[i].user_id));
          const name = user.rows[0].name;
          const companyname = user.rows[0].companyname;
-         post.status(201).push({name,companyname,content,rating});
+         post.push({name,companyname,content,rating});
       }
       // post=JSON.stringify(post);
-     return res.json({success:true,post},200);
+     return res.status(200).json({success:true,post});
    }catch(err){
       const message = err.message || 'Internal server Error!!';
       const code = err.code || 500;
